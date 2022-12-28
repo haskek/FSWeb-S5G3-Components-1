@@ -11,13 +11,14 @@ let menuElemanlari = [
 ];
 
 /*
-  Adım 1: Aşağıdaki etiketlee gibi bir menü oluşturmak için 'menuYapici' adlı bir bileşen yazın:
+  Adım 1: Aşağıdaki etiketler gibi bir menü oluşturmak için 'menuYapici' adlı bir bileşen yazın:
 
   <div class="menu">
     <ul>
       {tüm menü elemanları <li> içlerine}
     </ul>
   </div>
+
 
   'menuYapici' fonksiyonu tek argümanı olarak bir menü elemanları dizisini alır (birinci parametre).
 
@@ -34,3 +35,38 @@ let menuElemanlari = [
 
   Adım 6: 'menuYapici' fonksiyonunu ve 'menuElemanlari' dizisini kullanarak menüyü oluşturun, ve döndürülen menüyü header'e ekleyin.
 */
+
+function menuYapici(menuElemanlari){
+
+const menu=document.createElement("div");
+menu.classList.add("menu");
+
+
+const buttoncuk = document.querySelector(".menu-button");
+
+
+buttoncuk.addEventListener("click",(event)=>{
+  menu.classList.toggle("menu--open");
+})
+
+
+const liste=document.createElement("ul");
+for (let i=0 ; i < menuElemanlari.length ; i++){
+  const liElemanları=document.createElement("li") ;
+  liElemanları.textContent = menuElemanlari[i];
+  liste.appendChild(liElemanları);
+}
+
+
+menu.appendChild(liste)
+
+const headerkısmı=document.querySelector(".header");
+headerkısmı.appendChild(menu);
+
+return menu;
+
+}
+
+menuYapici(menuElemanlari)
+
+
